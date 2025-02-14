@@ -1,0 +1,166 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: skyblue;
+}
+.addNote {
+  top: 10px;
+  right: 30px;
+  position: fixed;
+  text-align: center;
+  background-color: #5cb85c;
+  color: white;
+  padding: 13px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 5px;
+}
+.addNote:hover {
+  background-color: #63c763;
+}
+.container {
+  margin: 58px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+.notePad {
+  margin-top: 2rem;
+  background-color: #fff;
+  height: 450px;
+  width: 26.438vw;
+  margin-bottom: 5rem;
+}
+.noteHeader {
+  justify-content: flex-end;
+  display: flex;
+  background-color: #5cb85c;
+  height: 40px;
+}
+.noteHeader button {
+  background-color: transparent;
+  border: none;
+}
+.noteCard {
+  background-color: white;
+  height: 470px;
+  width: 26.438vw;
+  /* display: none; */
+}
+.notePad textarea {
+  padding: 1rem;
+  outline: none;
+  border: none;
+  width: 26.438vw;
+  height: 358px;
+  font-size: 1.5rem;
+}
+
+.noteHeader i {
+  margin: 0.5rem;
+  cursor: pointer;
+  color: white;
+  font-size: 1.3rem;
+}
+
+/* Media Query */
+@media (min-width: 2560px) {
+  .noteHeader {
+    height: 60px;
+  }
+  .noteHeader i {
+    font-size: 2rem;
+  }
+}
+@media(max-width:912px){
+    .container {
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+      }
+      .notePad {
+        height: 399px;
+        width: 40.438vw;
+      }
+      .notePad textarea {
+        width: 40.438vw;
+      }
+      .noteCard {
+        width: 40.438vw;
+        height: 0;
+      }
+}
+@media(max-width:820px){
+    .container {
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+      }
+      .notePad {
+        height: 399px;
+        width: 40.438vw;
+      }
+      .notePad textarea {
+        width: 40.438vw;
+      }
+      .noteCard {
+        width: 40.438vw;
+        height: 0;
+      }
+}
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+  }
+  .notePad {
+    height: 399px;
+    width: 40.438vw;
+  }
+  .notePad textarea {
+    width: 40.438vw;
+  }
+  .noteCard {
+    width: 40.438vw;
+    height: 0;
+  }
+  .addNote {
+    padding: 7px;
+    font-size: 1rem;
+}
+}
+
+@media (max-width: 630px) {
+  .container {
+    grid-template-columns: auto;
+    justify-content: space-between;
+  }
+  .notePad {
+    height: 370px;
+    width: 80.438vw;
+  }
+  .notePad textarea {
+    width: 80.438vw;
+  }
+  .noteCard {
+    width: 80.438vw;
+    height: 0;
+  }
+
+}
+
+@media (max-width: 425px) {
+  .container {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 320px) {
+  .notePad {
+    height: 318px;
+  }
+
+}
