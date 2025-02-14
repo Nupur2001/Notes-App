@@ -1,31 +1,43 @@
-document.addEventListener("DOMContentLoaded",()=>{
-    let addNote=document.querySelector('.addNote')
-    let container=document.querySelector('.container')
-    addNote.addEventListener('click',()=>{
-        let newNote=document.createElement('div')
-        newNote.classList.add('note')
+document.addEventListener("DOMContentLoaded", () => {
+  let addNote = document.querySelector(".addNote");
+  let container = document.querySelector(".container");
+  addNote.addEventListener("click", () => {
+    let newNote = document.createElement("div");
+    newNote.classList.add("note");
 
-        let notepad=document.createElement('div')
-        notepad.classList.add('notePad')
+    let notepad = document.createElement("div");
+    notepad.classList.add("notePad");
 
-        let noteheader=document.createElement('div')
-        noteheader.classList.add('noteHeader')
+    let noteheader = document.createElement("div");
+    noteheader.classList.add("noteHeader");
 
-        let buttonEdit=document.createElement('button')
-        let buttonDelete=document.createElement('button')
+    let textarea = document.createElement("textarea");
 
-        buttonEdit.innerHTML='<i class="fa-solid fa-pen-to-square"></i>'
-        buttonDelete.innerHTML='<i class="fa-solid fa-trash-can"></i>'
+    let buttonEdit = document.createElement("button");
+    let buttonDelete = document.createElement("button");
 
-        
-        container.appendChild(newNote)
-        newNote.appendChild(notepad)
-        notepad.appendChild(noteheader)
-        noteheader.appendChild(buttonEdit)
-        noteheader.appendChild(buttonDelete)
+    buttonEdit.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
+    buttonDelete.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
 
-        buttonDelete.addEventListener('click',()=>{
-            newNote.remove()
-        })
-    })
-})
+    let notecard = document.createElement("div");
+    notecard.classList.add("noteCard");
+
+    container.appendChild(newNote);
+    newNote.appendChild(notepad);
+    notepad.appendChild(noteheader);
+    notepad.appendChild(textarea);
+    noteheader.appendChild(buttonEdit);
+    noteheader.appendChild(buttonDelete);
+
+    buttonEdit.addEventListener("click", () => {
+    //   let notecard = document.createElement("div");
+    //   notecard.classList.add("noteCard");
+      // buttonEdit.classList.toggle('notecard')
+      // textarea.appendChild('notecard')
+    });
+
+    buttonDelete.addEventListener("click", () => {
+      newNote.remove();
+    });
+  });
+});
