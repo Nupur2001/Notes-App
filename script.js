@@ -1,7 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   let addNote = document.querySelector(".addNote");
   let container = document.querySelector(".container");
+
   addNote.addEventListener("click", () => {
+    createNote();
+    saveNote()
+  });
+  function createNote() {
     let newNote = document.createElement("div");
     newNote.classList.add("note");
 
@@ -15,9 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let buttonEdit = document.createElement("button");
     let buttonDelete = document.createElement("button");
+    let buttonClean = document.createElement("button");
 
     buttonEdit.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
     buttonDelete.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+    buttonClean.innerHTML = '<i class="fa-solid fa-broom"></i>';
 
     let notecard = document.createElement("div");
     notecard.classList.add("noteCard");
@@ -27,17 +34,41 @@ document.addEventListener("DOMContentLoaded", () => {
     notepad.appendChild(noteheader);
     notepad.appendChild(textarea);
     noteheader.appendChild(buttonEdit);
+    noteheader.appendChild(buttonClean);
     noteheader.appendChild(buttonDelete);
 
     buttonEdit.addEventListener("click", () => {
-    //   let notecard = document.createElement("div");
-    //   notecard.classList.add("noteCard");
-      // buttonEdit.classList.toggle('notecard')
-      // textarea.appendChild('notecard')
+      if (textarea.hasAttribute("readonly")) {
+        textarea.removeAttribute("readonly");
+        textarea.focus();
+      } else {
+        textarea.setAttribute("readonly", true);
+        saveNote()
+      }
     });
 
     buttonDelete.addEventListener("click", () => {
       newNote.remove();
+      saveNote()
     });
-  });
+
+    buttonClean.addEventListener("click", () => {
+      textarea.value = "";
+      saveNote()
+    });
+  }
+  function saveNote() {
+    let notes = [];
+    document.querySelectorAll("textarea .note").forEach((note) => {
+      notes.push(note.value);
+    });
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }
 });
+
+function loadNote(){
+ let savedNote= JSON.parse(localStorage.getItem("notes"))
+ console.log(savedNote)
+}
+
+loadNote()
