@@ -7,7 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
     createNote();
     saveNote();
   });
-  function createNote() {
+
+
+  function createNote(text="") {
     let newNote = document.createElement("div");
     newNote.classList.add("note");
 
@@ -18,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     noteheader.classList.add("noteHeader");
 
     let textarea = document.createElement("textarea");
+    textarea.value=text
 
     let buttonEdit = document.createElement("button");
     let buttonDelete = document.createElement("button");
@@ -57,10 +60,11 @@ document.addEventListener("DOMContentLoaded", () => {
       textarea.value = "";
       saveNote();
     });
+
   }
   function saveNote() {
     let notes = [];
-    console.log(document.querySelectorAll(".note textarea"))
+    // console.log(document.querySelectorAll(".note textarea"));
     document.querySelectorAll(".note textarea").forEach((note) => {
       notes.push(note.value);
     });
@@ -70,10 +74,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function loadNote() {
   let savedNote = JSON.parse(localStorage.getItem("notes"));
-  console.log("savedNote", savedNote);
+  // console.log("savedNote", savedNote);
   savedNote.forEach((textContent) => {
-    textContent = textContent.value
-    console.log(textContent);
+    // console.log("TextContent: ",textContent)
+    createNote(textContent)
   });
-
 }
