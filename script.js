@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   let addNote = document.querySelector(".addNote");
   let container = document.querySelector(".container");
+  loadNote();
 
   addNote.addEventListener("click", () => {
     createNote();
-    saveNote()
+    saveNote();
   });
   function createNote() {
     let newNote = document.createElement("div");
@@ -43,32 +44,36 @@ document.addEventListener("DOMContentLoaded", () => {
         textarea.focus();
       } else {
         textarea.setAttribute("readonly", true);
-        saveNote()
+        saveNote();
       }
     });
 
     buttonDelete.addEventListener("click", () => {
       newNote.remove();
-      saveNote()
+      saveNote();
     });
 
     buttonClean.addEventListener("click", () => {
       textarea.value = "";
-      saveNote()
+      saveNote();
     });
   }
   function saveNote() {
     let notes = [];
-    document.querySelectorAll("textarea .note").forEach((note) => {
+    console.log(document.querySelectorAll(".note textarea"))
+    document.querySelectorAll(".note textarea").forEach((note) => {
       notes.push(note.value);
     });
     localStorage.setItem("notes", JSON.stringify(notes));
   }
 });
 
-function loadNote(){
- let savedNote= JSON.parse(localStorage.getItem("notes"))
- console.log(savedNote)
-}
+function loadNote() {
+  let savedNote = JSON.parse(localStorage.getItem("notes"));
+  console.log("savedNote", savedNote);
+  savedNote.forEach((textContent) => {
+    textContent = textContent.value
+    console.log(textContent);
+  });
 
-loadNote()
+}
